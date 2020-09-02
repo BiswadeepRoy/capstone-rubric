@@ -1,8 +1,12 @@
 function handleInput(event) {
+
+    // Taking the user inputs
     let date = document.getElementById('date').value;
     let city = document.getElementById('city').value;
+
     let enteredDate = new Date(date);
     let currentDate = new Date();
+
     // To calculate the time difference of two dates 
     var differenceInTime = enteredDate.getTime() - currentDate.getTime();
 
