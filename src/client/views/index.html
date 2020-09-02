@@ -4,7 +4,6 @@
 <head>
     <meta charset="utf-8">
     <title>Test</title>
-    <link href="../styles/main.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
@@ -17,14 +16,14 @@
             <div class='inputs'>
                 <div class='inputarea' id='input1'>
                     <div class="label">Enter city name you will travel</div>
-                    <div class="input"><input type="text" placeholder="Enter city.."></div>
+                    <div class="input"><input type="text" placeholder="Enter city.." id="city"></div>
                 </div>
                 <div class='inputarea' id='input2'>
                     <div class="label">Enter the date you wish to travel</div>
-                    <div class="input"><input type="date"></div>
+                    <div class="input"><input type="date" id="date"></div>
                 </div>
                 <div class='button'>
-                    <button>Generate</button>
+                    <button onclick="Client.handleInput(event)">Generate</button>
                 </div>
             </div>
             <div class='results'>
