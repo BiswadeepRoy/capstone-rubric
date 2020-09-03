@@ -1,8 +1,8 @@
 .mainContainer {
     display: grid;
     grid-template-columns: repeat(8, 1fr);
-    grid-template-rows: 10vh 80vh 10vh;
-    grid-template-areas: "hd hd hd hd hd hd hd hd" "mn mn mn mn mn mn mn mn" "ft ft ft ft ft ft ft ft";
+    grid-template-rows: 10vh 5vh 30vh 45vh 10vh;
+    grid-template-areas: "hd hd hd hd hd hd hd hd" "er er er rs rs rs rs rs" "in in in rs rs rs rs rs" "bl bl bl rs rs rs rs rs" "ft ft ft ft ft ft ft ft";
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
@@ -10,58 +10,143 @@ body {
     height: 100%;
     margin: 0;
     padding: 0;
+    background-color: #e6eeff;
 }
 
 header {
     grid-area: hd;
     padding: 0.5% 0.5% 2% 0.5%;
-    background-color: #e6e6e6;
-    border: 2px solid red;
+    background-color: #ccdcff;
+    //border: 2px solid red;
 }
 
-main {
-    grid-area: mn;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    border: 2px solid red;
+h1,
+h3 {
+    font-weight: 200;
 }
 
-div.inputs,
-div.results {
-    width: 50%;
+h3 {
+    border-left: 15px solid tomato;
+}
+
+div {
+    //border: 1px solid red;
+}
+
+div.heading {
+    font-size: 2em;
+    font-weight: 100;
+    border-left: 15px solid tomato;
+}
+
+div.inputs {
+    grid-area: in;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    border: 2px solid red;
+}
+
+div.error {
+    grid-area: er;
+    margin: 1%;
+    text-align: center;
+}
+
+div.statement {
+    font-weight: 450;
+    font-size: 1.25em;
+    border-left: 15px solid tomato;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+div.results {
+    grid-area: rs;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 div.inputarea {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    border: 2px solid red;
+    height: 17.5%;
+}
+
+#input1,
+#input2 {
+    background-color: #ffc2b3;
+    border-left: 15px solid tomato;
+    margin-left: 2%;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+#errorresponse {
+    margin-left: 2%;
 }
 
 div.label,
 div.input {
     width: 50%;
-}
-
-div.label {
-    text-align: right;
-}
-
-button {
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
+input {
+    height: 100%;
+    width: 90%;
+}
+
+div.label {
+    text-align: right;
+    padding-right: 2%;
+}
+
+button {
+    background-color: tomato;
+    color: white;
+    border-radius: 5%;
+    border: 3px solid tomato;
+    padding: 2%;
+    transition-duration: 0.4s;
+    font-weight: 700;
+}
+
+button:hover {
+    color: black;
+    background-color: white;
+}
+
+div.blankarea {
+    grid-area: bl;
+}
+
+div.image {
+    background-repeat: no-repeat;
+    background-position: center;
+    overflow: hidden;
+    background-size: cover;
+    height: 50%;
+    margin: 1.5% 1% 1% 1%;
+}
+
+div.weather {
+    background-repeat: no-repeat;
+    background-position: center;
+    overflow: hidden;
+    background-size: cover;
+    height: 50%;
+    margin: 2.5%;
+}
+
 footer {
     grid-area: ft;
     padding: 0.5%;
-    background-color: #525252;
+    background-color: #4d4dff;
     color: white;
-    border: 2px solid red;
+    //border: 2px solid red;
 }

@@ -12,25 +12,29 @@
             <div class="heading">Trip Advisor</div>
         </header>
 
-        <main>
-            <div class='inputs'>
-                <div class='inputarea' id='input1'>
-                    <div class="label">Enter city name you will travel</div>
-                    <div class="input"><input type="text" placeholder="Enter city.." id="city"></div>
-                </div>
-                <div class='inputarea' id='input2'>
-                    <div class="label">Enter the date you wish to travel</div>
-                    <div class="input"><input type="date" id="date"></div>
-                </div>
-                <div class='button'>
-                    <button onclick="Client.handleInput(event)">Generate</button>
-                </div>
+        <div class='error' id='errorresponse'>
+        </div>
+        <div class='inputs'>
+            <div class='inputarea'>
+                <div class="statement">Please Enter details to plan your trip.</div>
             </div>
-            <div class='results'>
-                <div class='image'>Sample Image</div>
-                <div class='weather'>Sample weather prediction</div>
+            <div class='inputarea' id='input1'>
+                <div class="label">Enter city name you will travel </div>
+                <div class="input"><input type="text" placeholder="Enter city.." id="city"></div>
             </div>
-        </main>
+            <div class='inputarea' id='input2'>
+                <div class="label">Enter the date you wish to travel </div>
+                <div class="input"><input type="date" id="date"></div>
+            </div>
+            <div class='inputarea'>
+                <button onclick="Client.handleInput(event)">Generate</button>
+            </div>
+        </div>
+        <div class="blankarea"></div>
+        <div class='results'>
+            <div class='image' id="imageurl"></div>
+            <div class='weather' id="weatherDetails"></div>
+        </div>
 
         <footer>
             <div class="copyright">&#169; All copyrights reserved.</div>

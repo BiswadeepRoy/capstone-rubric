@@ -7,9 +7,9 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 
 //Empty JS object to contain the data
-const projectData = {
-    days: 5,
-    city: 'pune'
+projectData = {
+    city: 'pune',
+    days: 5
 };
 
 //Setting up express server
@@ -19,11 +19,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(express.static('dist'));
 
-
-//Rendering webpage on '/'
-app.get('/', function(req, res) {
-    res.sendFile(path.resolve('src/client/views/index.html'))
-})
 
 //Listening to port number
 const port = 8080;
@@ -36,9 +31,11 @@ app.post('/postdetails', handlePostDetails);
 
 // Callback function to complete POST '/postdata'
 function handlePostDetails(req, res) {
-
     projectData = req.body;
-    console.log(projectData);
+    console.log("The request is received" + JSON.stringify(projectData));
+    res.send({
+        message: "Data successfully recieved"
+    });
 }
 
 //Get call
@@ -46,14 +43,13 @@ app.get('/getdetails', generateAPICallData);
 
 // Callback function to complete GET '/getdata'
 function generateAPICallData(req, res) {
-    console.log(projectData.city + " " + projectData.days);
+    console.log(projectData);
     getCountry(projectData.city).then(function(country) {
         let days = projectData.days;
-        return getWeather('pune', country, days);
+        return getWeather(projectData.city, country, projectData.days);
     }).then(function(returnvalue) {
         return getImage(returnvalue);
     }).then(function(finalvalue) {
-        console.log(finalvalue);
         return {
             method: 'POST',
             credentials: 'same-origin',
@@ -79,7 +75,9 @@ const getCountry = async(city) => {
 
     } catch (error) {
         console.log(error);
-        return 'error';
+        return {
+            error_message: JSON.stringify(error)
+        };
     }
 }
 
@@ -91,7 +89,6 @@ const getWeather = async(city = '', country = '', days) => {
         const requestedData = responseData.data[responseData.data.length - 1];
         let date = new Date();
         date.setDate(date.getDate() + days);
-        console.log(requestedData.max_temp);
         return {
             max_temp: requestedData.max_temp,
             min_temp: requestedData.min_temp,
@@ -103,15 +100,19 @@ const getWeather = async(city = '', country = '', days) => {
 
     } catch (error) {
         console.log(error);
-        return 'error';
+        return {
+            error_message: JSON.stringify(error)
+        };
     }
 }
 
 //Async function to get image
 const getImage = async(requestedData = {}) => {
-    let city = requestedData.city;
-    const response = await fetch(`https://pixabay.com/api/?key=18141304-163c887bda9b67802d25bb177&q=${city}&image_type=photo`);
+    const response = await fetch(`https://pixabay.com/api/?key=18141304-163c887bda9b67802d25bb177&q=${requestedData.city}&image_type=photo`);
     try {
+        if (requestedData.error_message != null) {
+            throw requestedData.error_message;
+        }
         const responseData = await response.json();
         const imageURL = responseData.hits[0].webformatURL;
         return {
@@ -126,6 +127,8 @@ const getImage = async(requestedData = {}) => {
 
     } catch (error) {
         console.log(error);
-        return 'error';
+        return {
+            error_message: JSON.stringify(error)
+        };
     }
 }
