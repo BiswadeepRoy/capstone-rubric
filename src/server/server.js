@@ -1,13 +1,15 @@
 //Importing different libraries
 const express = require('express');
-const dotenv = require('dotenv');
+//const dotenv = require('dotenv');
 const fetch = require('node-fetch');
-dotenv.config({ path: require('find-config')('.env') });
+//dotenv.config({ path: require('find-config')('.env') });
 const cors = require('cors');
 const bodyParser = require('body-parser');
-const geonamesUSER_NAME = `biswa`
-const pixabayAPI_KEY = `18141304-163c887bda9b67802d25bb177`
-const weatherbitAPI_KEY = `6bac312881784f5695dc61d05add4fa9`
+
+//using const values as dotenv not getting initialized  with npm start
+const geonamesUSER_NAME = `biswa`;
+const pixabayAPI_KEY = `18141304-163c887bda9b67802d25bb177`;
+const weatherbitAPI_KEY = `6bac312881784f5695dc61d05add4fa9`;
 
 //Empty JS object to contain the data
 projectData = {
