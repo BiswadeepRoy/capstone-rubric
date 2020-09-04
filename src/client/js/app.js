@@ -8,10 +8,11 @@ let tripduration;
 
 let dateNow = new Date();
 let dateValue = new Date(dateNow);
-const initialDateValue = dateValue.toISOString().slice(0, 10);
+const initialDateValue = dateValue.toISOString().slice(0, 10); //generating initial value of start date input
 dateValue.setDate(dateValue.getDate() + 16);
-const finalDateValue = dateValue.toISOString().slice(0, 10);
+const finalDateValue = dateValue.toISOString().slice(0, 10); //generating final value of start date input
 
+//Function to initialize DOM elements.
 function init() {
     document.addEventListener("DOMContentLoaded", function() {
         document.getElementById('date').min = initialDateValue;
@@ -43,6 +44,7 @@ function init() {
     });
 }
 
+//Function to update the return date dynamically
 function setEndDate(event) {
     let enddate = document.getElementById("dateend");
     let givendate = document.getElementById("date").value;
@@ -51,6 +53,7 @@ function setEndDate(event) {
     enddate.value = givendate;
 }
 
+//Function to handleInput and generate the results.
 function handleInput(event) {
 
     // Taking the user inputs
@@ -92,6 +95,7 @@ function handleInput(event) {
 
 }
 
+//Async function to send details of user to server.
 const postDetails = async(cityName = '', daysValue) => {
     const response = await fetch('http://localhost:8080/postdetails', {
         method: 'POST',
@@ -113,6 +117,7 @@ const postDetails = async(cityName = '', daysValue) => {
     }
 }
 
+//Async function to fetch location and weather details of user from server
 const getDetailsAndUpdateUI = async() => {
     let responseData = {};
     const response = await fetch('http://localhost:8080/getdetails');
@@ -154,6 +159,8 @@ const getDetailsAndUpdateUI = async() => {
     }
 }
 
+
+//Function to update the UI
 function resultsSetter(results, image, country = '', description = '', city = '', max_temp = '', min_temp = '', url = '', days, date, tripend, tripduration) {
     results.style = `background-image: none`;
     results.innerHTML = `<h1>Your trip to ${city}, ${country} is due in

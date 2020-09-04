@@ -1,10 +1,11 @@
-import { handleInput } from './js/inputHandler'
+import { handleInput } from './js/app'
 import './styles/main.scss'
-import { init } from './js/inputHandler'
-import { setEndDate } from './js/inputHandler'
-import { postDetails } from './js/inputHandler'
-import { getDetailsAndUpdateUI } from './js/inputHandler'
+import { init } from './js/app'
+import { setEndDate } from './js/app'
+import { postDetails } from './js/app'
+import { getDetailsAndUpdateUI } from './js/app'
 
+//Calling init() on completion of DOM load
 init()
 
 export { handleInput }
