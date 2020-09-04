@@ -23,8 +23,12 @@
                 <div class="input"><input type="text" placeholder="Enter city.." id="city"></div>
             </div>
             <div class='inputarea' id='input2'>
-                <div class="label">Enter the date you wish to travel </div>
-                <div class="input"><input type="date" id="date"></div>
+                <div class="label">Enter the date you wish to start </div>
+                <div class="input"><input type="date" id="date" onchange="Client.setEndDate(event)"></div>
+            </div>
+            <div class='inputarea' id='input3'>
+                <div class="label">Enter the date you wish to return </div>
+                <div class="input"><input type="date" id="dateend" disabled></div>
             </div>
             <div class='inputarea'>
                 <button onclick="Client.handleInput(event)">Generate</button>
@@ -40,6 +44,14 @@
             <div class="copyright">&#169; All copyrights reserved.</div>
         </footer>
     </div>
+    <script>
+        if ('serviceWorker' in navigator) {
+            // Use the window load event to keep the page load performant
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/service-worker.js');
+            });
+        }
+    </script>
 </body>
 
 </html>

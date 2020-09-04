@@ -67,10 +67,10 @@ function generateAPICallData(req, res) {
 
 //Async function to get country
 const getCountry = async(city) => {
-    const response = await fetch(`http://api.geonames.org/searchJSON?q=${city}&maxRows=1&username=biswa`);
+    const response = await fetch(`http://api.geonames.org/searchJSON?q=${city}&maxRows=1&username=${process.env.geonamesUSER_NAME}`);
     try {
         const responseData = await response.json();
-        const countryID = responseData.geonames[0].countryCode;
+        const countryID = responseData.geonames[0].countryName;
         return countryID;
 
     } catch (error) {
@@ -83,7 +83,7 @@ const getCountry = async(city) => {
 
 //Async function to get weather
 const getWeather = async(city = '', country = '', days) => {
-    const response = await fetch(`https://api.weatherbit.io/v2.0/forecast/daily?city=${city},${country}&key=6bac312881784f5695dc61d05add4fa9&units=M&days=${days}`);
+    const response = await fetch(`https://api.weatherbit.io/v2.0/forecast/daily?city=${city},${country}&key=${process.env.weatherbitAPI_KEY}&units=M&days=${days}`);
     try {
         const responseData = await response.json();
         const requestedData = responseData.data[responseData.data.length - 1];
@@ -108,7 +108,7 @@ const getWeather = async(city = '', country = '', days) => {
 
 //Async function to get image
 const getImage = async(requestedData = {}) => {
-    const response = await fetch(`https://pixabay.com/api/?key=18141304-163c887bda9b67802d25bb177&q=${requestedData.city}&image_type=photo`);
+    const response = await fetch(`https://pixabay.com/api/?key=${process.env.pixabayAPI_KEY}&q=${requestedData.city}&image_type=photo`);
     try {
         if (requestedData.error_message != null) {
             throw requestedData.error_message;
