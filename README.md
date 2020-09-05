@@ -13,7 +13,7 @@ Run these commands to start the project:
 1. npm run build-prod
 2. npm run build (to start the development environment, the client will run and fetch info when the server is up).
 3. npm start (run on a different terminal to start server over there).
-4. npm run test (to run the test cases and also this time the server should be up and running).
+4. npm run test (Please Close the running servers to run test cases!!).
 
 Install any additional modules if needed as per the error messages or please raise a issue.
 
