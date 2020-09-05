@@ -4,12 +4,16 @@ Capstone project to understand the full functionality of asynchronous javascript
 
 # Steps to Start
 
-Step1 > Install webpack-dev-server, using 'npm install -d webpack-dev-server'
-Step2 > Install webpack, using 'npm install webpack'
-Step3 > Install node if required, using 'npm install node'
-Step4 > Execute command after going to the server folder , node server.js to start server
-Step5 > Execute command 'npm run build' and 'npm run build-prod' to build the whole project  
-Step6 > Install jest if you want to run test cases, using 'npm install --save-dev jest' and run test cases with 'npm run test'
+Install the following things:
+1. npm install webpack webpack-cli
+2. npm install -d webpack-dev-server
+
+Run these commands to start the project:
+
+1. npm run build-prod
+2. npm run build (to start the development environment, the client will run and fetch info when the server is up).
+3. npm start (run on a different terminal to start server over there).
+4. npm run test (to run the test cases and also this time the server should be up and running).
 
 Install any additional modules if needed as per the error messages or please raise a issue.
 

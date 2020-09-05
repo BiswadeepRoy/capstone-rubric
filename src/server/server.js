@@ -75,7 +75,6 @@ const getCountry = async(city) => {
     const response = await fetch(`http://api.geonames.org/searchJSON?q=${city}&maxRows=1&username=${geonamesUSER_NAME}`);
     try {
         const responseData = await response.json();
-        console.log(`http://api.geonames.org/searchJSON?q=${city}&maxRows=1&username=${geonamesUSER_NAME}`);
         const countryID = responseData.geonames[0].countryName;
         return countryID;
 
